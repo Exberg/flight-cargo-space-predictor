@@ -1,5 +1,5 @@
 // Global configuration
-const API_BASE = 'http://localhost:5001/api';
+const API_BASE = '/api';
 let currentData = null;
 
 // Initialize
