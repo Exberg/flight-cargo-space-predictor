@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Cargo Insight</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">✈️ Cargo<span class="highlight">Mind</span></div>
+            <p class="tagline">AI-Powered Flight Luggage Prediction & Analytics</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Data Control Section -->
+            <section class="card data-control">
+                <div class="section-header">
+                    <h2>1. Data Source</h2>
+                    <p>Import your flight data or generate a random dataset to get started.</p>
+                </div>
+                
+                <div class="action-buttons">
+                    <div class="upload-btn-wrapper">
+                        <button class="btn btn-secondary">
+                            <span class="icon">📂</span> Import CSV
+                        </button>
+                        <input type="file" id="fileInput" accept=".csv">
+                    </div>
+                    <button class="btn btn-secondary" onclick="generateSampleData()">
+                        <span class="icon">🎲</span> Generate Random Data
+                    </button>
+                </div>
+
+                <div id="statusMessage" class="status-message"></div>
+
+                <!-- File List (Hidden by default) -->
+                <div id="fileListContainer" class="file-list-container" style="display: none;">
+                    <h3>Available Datasets</h3>
+                    <div id="fileList" class="file-list"></div>
+                </div>
+            </section>
+
+            <!-- Data Preview Section -->
+            <section id="dataPreviewSection" class="card data-preview" style="display: none;">
+                <div class="section-header">
+                    <h2>2. Data Preview</h2>
+                    <p>Review your data before analysis.</p>
+                </div>
+                <div class="table-container">
+                    <div id="dataTable"></div>
+                </div>
+                <div id="dataStats" class="data-stats"></div>
+            </section>
+
+            <!-- Analysis Control Section -->
+            <section id="analysisControlSection" class="card analysis-control" style="display: none;">
+                <div class="section-header">
+                    <h2>3. Analysis</h2>
+                    <p>Run ML models to discover feature weightage and hidden patterns.</p>
+                </div>
+                <div class="center-action">
+                    <button id="analyzeBtn" class="btn btn-primary btn-large" onclick="runAnalysis()">
+                        <span class="icon">⚡</span> Analyze Factors
+                    </button>
+                </div>
+                <div id="trainingProgress" class="progress-bar-container" style="display: none;">
+                    <div class="progress-bar"></div>
+                    <p class="progress-text">Training models and analyzing patterns...</p>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-grid" style="display: none;">
+                
+                <!-- Feature Importance (Weightage) -->
+                <div class="card result-card full-width">
+                    <div class="section-header">
+                        <h2>Feature Weightage</h2>
+                        <p>Which factors most strongly influence luggage size?</p>
+                    </div>
+                    <div id="featureImportanceChart" class="chart-container"></div>
+                </div>
+
+                <!-- Key Insights -->
+                <div class="card result-card">
+                    <div class="section-header">
+                        <h2>Key Insights</h2>
+                        <p>AI-discovered rules and patterns</p>
+                    </div>
+                    <div id="insightsList" class="insights-list"></div>
+                </div>
+
+                <!-- Feature Interactions -->
+                <div class="card result-card">
+                    <div class="section-header">
+                        <h2>Combination Effects</h2>
+                        <p>How factors work together</p>
+                    </div>
+                    <div id="featureInteractions" class="interactions-list"></div>
+                </div>
+
+                <!-- Conditional Probabilities -->
+                <div class="card result-card full-width">
+                    <div class="section-header">
+                        <h2>Conditional Probabilities</h2>
+                        <p>Likelihood of luggage size ranges under specific conditions</p>
+                    </div>
+                    <div id="conditionalProbs" class="probs-container"></div>
+                </div>
+
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 CargoMind Analytics</p>
+        </footer>
+    </div>
+
+    <script src="static/app.js"></script>
+</body>
+</html>
