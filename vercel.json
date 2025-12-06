@@ -1,16 +1,8 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "app.py",
-            "use": "@vercel/python"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "app.py"
-        }
-    ]
+  "version": 2,
+  "buildCommand": "pip install --no-cache-dir --no-deps -r requirements.txt",
+  "outputDirectory": ".",
+  "ignoreCommand": "git check-ignore -q $1 || true",
+  "installCommand": "pip install --no-cache-dir --no-deps -r requirements.txt",
+  "framework": "python"
 }
-
